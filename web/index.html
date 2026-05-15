@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kvadra Load View</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+    <div>
+        <h1>Kvadra Load View</h1>
+        <p class="subtitle">Мониторинг загрузки ресурсов Linux/macOS в реальном времени</p>
+    </div>
+    <div class="status">
+        <span id="connection-dot" class="dot"></span>
+        <span id="connection-text">подключение</span>
+    </div>
+</header>
+
+<main class="layout">
+    <section class="metrics-grid" aria-label="Основные показатели">
+        <article class="metric primary">
+            <span class="metric-title">CPU</span>
+            <strong id="cpu-total">0%</strong>
+            <div class="progress">
+                <span id="cpu-total-bar"></span>
+            </div>
+        </article>
+
+        <article class="metric">
+            <span class="metric-title">Память</span>
+            <strong id="memory-percent">0%</strong>
+            <span id="memory-text" class="metric-note">0 / 0</span>
+            <div class="progress">
+                <span id="memory-bar"></span>
+            </div>
+        </article>
+
+        <article class="metric">
+            <span class="metric-title">Swap</span>
+            <strong id="swap-percent">0%</strong>
+            <span id="swap-text" class="metric-note">0 / 0</span>
+            <div class="progress">
+                <span id="swap-bar"></span>
+            </div>
+        </article>
+
+        <article class="metric">
+            <span class="metric-title">Load average</span>
+            <strong id="load-average">0.00 0.00 0.00</strong>
+            <span id="process-count" class="metric-note">0 процессов</span>
+        </article>
+    </section>
+
+    <section class="content-grid">
+        <article class="panel">
+            <div class="panel-header">
+                <h2>Ядра CPU</h2>
+                <span id="cpu-core-count">0</span>
+            </div>
+            <div id="cpu-cores" class="core-list"></div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-header">
+                <h2>I/O</h2>
+                <span id="timestamp">--</span>
+            </div>
+            <dl class="io-grid">
+                <div>
+                    <dt>Сеть RX</dt>
+                    <dd id="network-rx">0 B/s</dd>
+                </div>
+                <div>
+                    <dt>Сеть TX</dt>
+                    <dd id="network-tx">0 B/s</dd>
+                </div>
+                <div>
+                    <dt>Диск чтение</dt>
+                    <dd id="disk-read">0 B/s</dd>
+                </div>
+                <div>
+                    <dt>Диск запись</dt>
+                    <dd id="disk-write">0 B/s</dd>
+                </div>
+                <div>
+                    <dt>Uptime</dt>
+                    <dd id="uptime">0с</dd>
+                </div>
+                <div>
+                    <dt>Платформа</dt>
+                    <dd id="platform">--</dd>
+                </div>
+            </dl>
+        </article>
+    </section>
+
+    <section class="panel process-panel">
+        <div class="panel-header">
+            <h2>Процессы</h2>
+            <span>top по CPU/RAM</span>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>PID</th>
+                    <th>USER</th>
+                    <th>STATE</th>
+                    <th>CPU</th>
+                    <th>MEM</th>
+                    <th>THR</th>
+                    <th>COMMAND</th>
+                </tr>
+                </thead>
+                <tbody id="processes"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
